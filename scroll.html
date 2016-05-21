@@ -1,0 +1,143 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script>
+x = 0;
+$(document).ready(function(){ //ya lo conoces
+    
+    //-------scroll en la ventana:
+    $(window).scroll(function(){
+      
+        var posventana = $(window).scrollTop();
+       console.log(posventana);
+        
+        $("div.posfix").text(posventana);
+        
+    });
+    
+    
+    
+    
+    //---------scroll en un div
+    $("div.scrollear").scroll(function(){ //se activa al hacer evento scroll
+        
+        var  pos  =  $(this).scrollTop();
+        
+        //$("span.mostrar").text( x+= 1);
+        $("span.mostrar").text( pos);
+        
+        
+        
+    });
+    
+    
+    //------------
+    
+    
+    /*
+        como una nota a parte....
+        CADA QUE HACEMOS SCROLL .....estamos llamando a una funciona una y otra y otra vez...sooo....puede que si hacemos muchas cosas...el código sea lento...sooo...como codigo mas "optimo", tenemos lo siguiente.....
+        
+        //detectar cuando hacemos scroll con una bandera
+        //con una funcion tipo setInterval(repetitiva), detectar la bandera cada...250milisegundos o algo similar...
+        //entonces revisar donde estamos posicionados y ejecutar alguna funcion..
+        
+        
+        esos 3 pasos son 2 funciones separadas....
+        1- la que Detecta
+        2- la que Ejecuta
+        
+        
+        //---
+        HacerScroll = false; //bandera inicial
+
+        $(window).scroll(function() {
+            HacerScroll = true; //cambiamos el status al scrollear
+        });
+
+        //funcion que se ejecuta una y otra y otra vez cada 250millis
+        setInterval(function() { //callback
+        
+            if ( HacerScroll ) { //preguntar si la bandera es true
+            
+                HacerScroll = false; //reseteamos la bandera
+                var posicion = $(window).scrollTop()// revisar posicion
+                mifuncionAlgo();// hacer alguna otra cosa...
+            }//if
+            
+        }, 250); //fin de setInterval
+
+    */
+    
+    
+    
+});
+</script>
+</head>
+<body>
+
+<p>Dale scroll al div   o   a la ventana</p>
+
+<div class="scrollear" style="border:1px solid black;width:200px;height:300px;overflow:scroll;">
+    
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi a scelerisque risus. Phasellus non risus nec nunc convallis porta. Aenean tincidunt ex urna, aliquet lobortis erat ultrices quis. Nullam egestas, nulla ut interdum lobortis, lectus nisi aliquam erat, vel mattis nibh orci eu mi. Nam nulla augue, efficitur ut ullamcorper ac, tempor non elit. Suspendisse efficitur quam eu pretium bibendum. Aliquam erat volutpat. Proin quam lectus, semper non hendrerit ultrices, scelerisque vel enim. Aliquam id ligula semper, mattis dolor quis, mollis enim. Nam mollis lorem ac orci vestibulum vestibulum. Nam ac tellus sit amet velit faucibus vulputate. Morbi sit amet vulputate neque. Donec in ultricies nulla. Etiam ac rhoncus sapien.
+    
+    <br><br>
+
+Vivamus in lacinia ex. Donec aliquam ex nec eros convallis, in porttitor magna efficitur. Suspendisse id pulvinar lacus. Curabitur lobortis nisl sed magna dignissim, nec fermentum nulla vehicula. Cras ut sollicitudin mi. Proin aliquam tempor tellus eu euismod. Fusce posuere erat lectus, quis gravida lacus gravida vitae. Pellentesque turpis lacus, posuere sit amet hendrerit nec, fermentum in massa. Fusce hendrerit odio nec tellus blandit, eu gravida dui dictum. Donec auctor quis felis at tempus. Etiam sed risus felis.
+    
+    <br><br>
+
+Nam ac leo ullamcorper, fringilla massa sit amet, fringilla enim. Morbi sodales enim non felis placerat bibendum. Quisque malesuada venenatis arcu in porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam erat volutpat. Mauris id ex at nulla mollis tempor. Curabitur ac consectetur massa, eget facilisis nulla. Nulla turpis nunc, pretium quis leo id, pulvinar semper sem. Donec quis metus quis erat malesuada feugiat. Curabitur tempus arcu sit amet sollicitudin dapibus. Nulla et feugiat lectus. Sed quis nisi molestie, venenatis urna id, blandit tortor. Ut molestie velit non consectetur ultrices. Suspendisse risus dui, dapibus sed cursus id, molestie sed eros.
+    
+    
+    
+    
+    
+    
+</div><!-- fin div con overflow-->
+    
+    
+    <br><br>
+Mostrar Scroll del Div:<br>
+<p>
+    Posicion <span class="mostrar">0</span> 
+</p>
+    
+    
+    
+    <hr>
+    
+    
+    <br>----------------------<br>
+    
+    
+    <div style="border:2px dashed red; font-size:5em;">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi a scelerisque risus. Phasellus non risus nec nunc convallis porta. Aenean tincidunt ex urna, aliquet lobortis erat ultrices quis. Nullam egestas, nulla ut interdum lobortis, lectus nisi aliquam erat, vel mattis nibh orci eu mi. Nam nulla augue, efficitur ut ullamcorper ac, tempor non elit. Suspendisse efficitur quam eu pretium bibendum. Aliquam erat volutpat. Proin quam lectus, semper non hendrerit ultrices, scelerisque vel enim. Aliquam id ligula semper, mattis dolor quis, mollis enim. Nam mollis lorem ac orci vestibulum vestibulum. Nam ac tellus sit amet velit faucibus vulputate. Morbi sit amet vulputate neque. Donec in ultricies nulla. Etiam ac rhoncus sapien.
+
+    
+    <br><br>
+    
+    
+Vivamus in lacinia ex. Donec aliquam ex nec eros convallis, in porttitor magna efficitur. Suspendisse id pulvinar lacus. Curabitur lobortis nisl sed magna dignissim, nec fermentum nulla vehicula. Cras ut sollicitudin mi. Proin aliquam tempor tellus eu euismod. Fusce posuere erat lectus, quis gravida lacus gravida vitae. Pellentesque turpis lacus, posuere sit amet hendrerit nec, fermentum in massa. Fusce hendrerit odio nec tellus blandit, eu gravida dui dictum. Donec auctor quis felis at tempus. Etiam sed risus felis.
+
+    <br><br>
+    
+    
+Nam ac leo ullamcorper, fringilla massa sit amet, fringilla enim. Morbi sodales enim non felis placerat bibendum. Quisque malesuada venenatis arcu in porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam erat volutpat. Mauris id ex at nulla mollis tempor. Curabitur ac consectetur massa, eget facilisis nulla. Nulla turpis nunc, pretium quis leo id, pulvinar semper sem. Donec quis metus quis erat malesuada feugiat. Curabitur tempus arcu sit amet sollicitudin dapibus. Nulla et feugiat lectus. Sed quis nisi molestie, venenatis urna id, blandit tortor. Ut molestie velit non consectetur ultrices. Suspendisse risus dui, dapibus sed cursus id, molestie sed eros.
+
+    <br><br>
+    
+Pellentesque auctor egestas nisi, at sagittis metus blandit at. Vivamus urna ligula, dictum et tellus ut, porta ultrices erat. Maecenas pretium nulla nec nisl auctor semper quis quis nisi. Sed ut nisi malesuada, euismod ipsum eu, commodo diam. Nullam ac justo non ante molestie consectetur. In non nunc vel justo feugiat malesuada. Etiam aliquet et enim sed dapibus. Vestibulum sit amet lorem posuere, lobortis elit ut, pellentesque purus. Ut fringilla lacus a neque pretium tincidunt. Maecenas ornare sem placerat turpis iaculis euismod sed eget risus. Quisque accumsan magna sit amet enim egestas, non tempor diam rhoncus. Aenean in suscipit sem, nec sagittis ligula. Maecenas sem leo, fringilla quis eleifend sit amet, vulputate quis odio. Donec luctus blandit felis, hendrerit sollicitudin libero vulputate in. Nullam at aliquam sapien.
+    <br><br>
+    
+Etiam ac euismod lectus. Nam varius mi et metus molestie sagittis. Nunc et odio non risus pretium placerat nec at sem. Phasellus tristique risus sed maximus malesuada. Nunc gravida lorem in augue dignissim, ac volutpat diam vulputate. Maecenas sapien magna, lobortis vel suscipit eu, consectetur eget metus. Nam at nisi consectetur, pulvinar metus eu, consequat orci. Ut nec erat id metus ullamcorper placerat. Suspendisse vitae lacus sit amet est tincidunt aliquet. Nulla nec nunc nibh. Fusce suscipit augue sagittis nulla blandit, ac pellentesque orci feugiat.
+    </div> 
+    
+    
+    <div class="posfix" style="position:fixed; right:10%; top:0; width: 200px; background-color:#1abc9c; color:white; font-size:2em;">
+        aqui va el de la ventana 
+    </div>
+
+</body>
+</html>
